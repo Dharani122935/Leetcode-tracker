@@ -1,23 +1,14 @@
-// Last updated: 09/07/2026, 18:25:36
+// Last updated: 09/07/2026, 18:26:20
 1class Solution {
-2    public int maxPoints(int[][] points) {
-3        int max=0;
-4        for(int[] x:points){
-5            Map<Double,Integer> map=new HashMap<>();
-6            for(int[]y:points){
-7                if(x==y)
-8                    continue;
-9                    double slope=0;
-10                    if(y[0]-x[0]==0)
-11                        slope=Double.POSITIVE_INFINITY;
-12                    else
-13                        slope=(y[1]-x[1])/(double)(y[0]-x[0]);
-14                    map.put(slope,map.getOrDefault(slope,0)+1);
-15                    max=Math.max(max,map.get(slope));
-16       
-17                
-18            }
-19        }
-20        return max+1;
-21    }
-22}
+2    public boolean checkStraightLine(int[][] coordinates) {
+3        int x0=coordinates[0][0],y0=coordinates[0][1];
+4        int x1=coordinates[1][0],y1=coordinates[1][1];
+5        for(int i=2;i<coordinates.length;i++){
+6            int x2=coordinates[i][0],y2=coordinates[i][1];
+7            if((y1-y0)*(x2-x1)!=(y2-y1)*(x1-x0)){
+8                return false;
+9            }
+10        }
+11        return true;
+12    }
+13}
