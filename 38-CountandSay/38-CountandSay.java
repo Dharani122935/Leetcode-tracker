@@ -1,15 +1,16 @@
-// Last updated: 09/07/2026, 18:19:02
-1import java.util.HashSet;
-2
-3public class Solution {
-4    public boolean checkIfExist(int[] arr) {
-5        HashSet<Integer> set = new HashSet<>();
-6        for (int num : arr) {
-7            if (set.contains(num * 2) || (num % 2 == 0 && set.contains(num / 2))) {
-8                return true;
-9            }
-10            set.add(num);
+// Last updated: 09/07/2026, 18:20:07
+1class Solution {
+2    public int searchInsert(int[] nums, int target) {
+3        int start = 0;
+4        int end = nums.length-1;
+5
+6        while (start <= end) {
+7            int mid = start + (end-start)/2;
+8            if (nums[mid] == target) return mid;
+9            else if (nums[mid] > target) end = mid-1;
+10            else start = mid+1;
 11        }
-12        return false;
-13    }
-14}
+12
+13        return start;
+14    }
+15}
