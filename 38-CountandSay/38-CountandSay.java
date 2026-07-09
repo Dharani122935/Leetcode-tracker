@@ -1,20 +1,23 @@
-// Last updated: 09/07/2026, 18:08:01
+// Last updated: 09/07/2026, 18:09:28
 1class Solution {
-2    public int search(int[] nums, int target) {
-3       int n = nums.length;
-4       int low = 0;
-5       int high = n - 1;
-6       
-7       while (low <= high) {
-8            int mid = (low + high) / 2;
-9            if (nums[mid] == target) {
-10                return mid;
-11            } else if (target < nums[mid]) {
-12                high = mid - 1;
-13            } else {
-14                low = mid + 1;
-15            }
-16       }
-17       return -1; 
-18    }
-19}
+2    public int[] findErrorNums(int[] nums) {
+3        int dup = -1, missing = -1;
+4        
+5        for (int i = 1; i <= nums.length; i++) {
+6            int count = 0;
+7            for (int j = 0; j < nums.length; j++) {
+8                if (nums[j] == i) {
+9                    count++;
+10                }
+11            }
+12            if (count == 2) {
+13                dup = i;
+14            } else if (count == 0) {
+15                missing = i;
+16            }
+17        }
+18        
+19        return new int[] {dup, missing};
+20    }
+21}
+22
