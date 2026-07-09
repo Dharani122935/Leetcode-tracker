@@ -1,20 +1,36 @@
-// Last updated: 09/07/2026, 22:10:51
+// Last updated: 09/07/2026, 22:12:25
 1class Solution {
-2    void dfs(int[][] img,int r,int c,int clr,int oc){
-3        if(r<0|| c<0 || r>=img.length||c>=img[0].length||img[r][c]!=oc){
-4            return;
-5        }
-6        img[r][c]=clr;
-7        dfs(img,r-1,c,clr,oc);
-8        dfs(img,r,c+1,clr,oc);
-9        dfs(img,r+1,c,clr,oc);
-10        dfs(img,r,c-1,clr,oc);
-11    }
-12    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
-13        int oldCol=image[sr][sc];
-14        if(image[sr][sc]!=color){
-15            dfs(image,sr,sc,color,oldCol);
-16        }
-17        return image;
-18    }
-19}
+2    public String[] findWords(String[] words) {
+3        ArrayList<String> result = new ArrayList<>();
+4        for (String word : words) {
+5            if (keyBoardVerify(word)) {
+6                result.add(word);
+7            }
+8        }
+9        return result.toArray(new String[0]);
+10    }
+11    static boolean keyBoardVerify(String st) {
+12        String[] stArr = {
+13            "qwertyuiopQWERTYUIOP",
+14            "asdfghjklASDFGHJKL",
+15            "zxcvbnmZXCVBNM"
+16        };
+17        char ch = st.charAt(0);
+18        int ind = -1;
+19        // Find the row of the first letter
+20        for (int i = 0; i < stArr.length; i++) {
+21            if (stArr[i].indexOf(ch) >= 0) {
+22                ind = i;
+23                break;
+24            }
+25        }
+26        // Check if all characters are in that row
+27        for (int i = 1; i < st.length(); i++) {
+28            ch = st.charAt(i);
+29            if (stArr[ind].indexOf(ch) < 0) {
+30                return false;
+31            }
+32        }
+33        return true;
+34    }
+35}
