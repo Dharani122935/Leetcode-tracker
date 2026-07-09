@@ -1,8 +1,23 @@
-// Last updated: 09/07/2026, 22:03:27
+// Last updated: 09/07/2026, 22:05:23
 1class Solution {
-2    public boolean isPowerOfThree(int n) {
-3        if (n == 1) return true;
-4        if (n <= 0 || n % 3 != 0) return false;
-5        return isPowerOfThree(n / 3);
-6    }
-7}
+2    public List<String> fizzBuzz(int n) {
+3        List<String>ans=new ArrayList<>();
+4        for(int i=1;i<=n;i++){
+5            if(i%3==0&&i%5==0){
+6                ans.add("FizzBuzz");
+7            }
+8            else if(i%3==0){
+9                ans.add("Fizz");
+10            }
+11            else if(i%5==0){
+12                ans.add("Buzz");
+13            }
+14            else{
+15                ans.add(Integer.toString(i));
+16            }
+17
+18        }
+19        return ans;
+20
+21    }
+22}
