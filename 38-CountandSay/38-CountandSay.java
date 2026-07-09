@@ -1,18 +1,27 @@
-// Last updated: 09/07/2026, 17:59:11
+// Last updated: 09/07/2026, 18:00:05
 1class Solution {
-2    public int[] decompressRLElist(int[] nums) {
-3        int arrSize = 0;
-4        for (int i = 0; i < nums.length; i += 2) {
-5            arrSize += nums[i];
-6        }
-7        
-8        int[] result = new int[arrSize];
-9
-10        int startIdx = 0;
-11        for (int i = 0; i < nums.length; i += 2) {
-12            Arrays.fill(result, startIdx, startIdx + nums[i], nums[i + 1]);
-13            startIdx += nums[i];
-14        }
-15        return result;
-16    }
-17}
+2    public int[][] modifiedMatrix(int[][] matrix) {
+3        int r = matrix.length;
+4        int c = matrix[0].length;
+5
+6        for (int j = 0; j < c; j++) {
+7            int max = Integer.MIN_VALUE;
+8
+9            // 1. Find max in column j
+10            for (int i = 0; i < r; i++) {
+11                if (matrix[i][j] != -1) {
+12                    max = Math.max(max, matrix[i][j]);
+13                }
+14            }
+15
+16            // 2. Replace all -1 with max
+17            for (int i = 0; i < r; i++) {
+18                if (matrix[i][j] == -1) {
+19                    matrix[i][j] = max;
+20                }
+21            }
+22        }
+23
+24        return matrix;
+25    }
+26}
