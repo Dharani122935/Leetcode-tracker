@@ -1,12 +1,13 @@
-// Last updated: 09/07/2026, 22:01:38
-1class Solution {
-2    public String convertToTitle(int columnNumber) {
-3        StringBuilder result = new StringBuilder();
-4        while (columnNumber > 0) {
-5            columnNumber--;
-6            result.append((char) (columnNumber % 26 + 'A'));
-7            columnNumber /= 26;
-8        }
-9        return result.reverse().toString();
-10    }
-11}
+// Last updated: 09/07/2026, 22:02:43
+1public class Solution {
+2    public boolean isPowerOfTwo(int n) {
+3        if (n == 0) return false;
+4        
+5        while (n > 0) {
+6            if (n == 1) return true;
+7            if (n % 2 != 0) break;
+8            n /= 2;
+9        }
+10        return false;
+11    }
+12}
