@@ -1,20 +1,20 @@
-// Last updated: 09/07/2026, 22:06:21
+// Last updated: 09/07/2026, 22:07:41
 1class Solution {
-2    public String addBinary(String a, String b) {
-3        StringBuilder result = new StringBuilder();
-4        int i = a.length() - 1, j = b.length() - 1, carry = 0;
+2    public int climbStairs(int n) {
+3        if (n == 1) return 1;
+4        if (n == 2) return 2;
 5
-6        while (i >= 0 || j >= 0 || carry > 0) {
-7            int sum = carry;
-8            if (i >= 0) sum += a.charAt(i--) - '0';
-9            if (j >= 0) sum += b.charAt(j--) - '0';
-10            
-11            result.append(sum % 2);   
-12            carry = sum / 2;        
-13        }
-14
-15        return result.reverse().toString();
-16    }
-17}
-18
+6        int first = 1; 
+7        int second = 2;
+8        int result = 0;
+9
+10        for (int i = 3; i <= n; i++) {
+11            result = first + second;
+12            first = second;
+13            second = result;
+14        }
+15
+16        return result;
+17    }
+18}
 19
