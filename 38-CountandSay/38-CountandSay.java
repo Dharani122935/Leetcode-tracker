@@ -1,23 +1,19 @@
-// Last updated: 09/07/2026, 18:09:28
+// Last updated: 09/07/2026, 18:10:15
 1class Solution {
-2    public int[] findErrorNums(int[] nums) {
-3        int dup = -1, missing = -1;
-4        
-5        for (int i = 1; i <= nums.length; i++) {
-6            int count = 0;
-7            for (int j = 0; j < nums.length; j++) {
-8                if (nums[j] == i) {
-9                    count++;
-10                }
-11            }
-12            if (count == 2) {
-13                dup = i;
-14            } else if (count == 0) {
-15                missing = i;
-16            }
-17        }
-18        
-19        return new int[] {dup, missing};
-20    }
-21}
-22
+2    public int findMaxConsecutiveOnes(int[] nums) {
+3        int k=0;
+4        int max=0;
+5        
+6        for (int i=0;i<nums.length;i++){
+7            if (nums[i]==1){
+8                k++;
+9            }
+10            else{
+11                max = Math.max(max,k);
+12                k=0;
+13            }
+14        }
+15        max =Math.max(k,max);
+16        return max;
+17    }
+18}
