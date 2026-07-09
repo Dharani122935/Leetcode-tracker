@@ -1,15 +1,25 @@
-// Last updated: 09/07/2026, 18:11:45
+// Last updated: 09/07/2026, 18:12:24
 1class Solution {
-2    public List<Integer> findDisappearedNumbers(int[] nums) {
-3        List<Integer> result = new ArrayList<>();
-4		boolean[] n = new boolean[nums.length+1];
-5		for(int num : nums) {
-6			n[num] = true;
-7		}
-8		
-9		for(int i=1; i<=nums.length; i++) {
-10			if(!n[i]) result.add(i);
-11		}
-12        return result;
-13    }
-14}
+2    public int thirdMax(int[] nums) {
+3        long first = Long.MIN_VALUE;
+4        long second = Long.MIN_VALUE;
+5        long third = Long.MIN_VALUE;
+6
+7        for (int i = 0; i < nums.length; i++) {
+8            if (nums[i] > first) {
+9                third = second;
+10                second = first;
+11                first = nums[i];
+12            } else if (nums[i] > second && nums[i] != first) {
+13                third = second;
+14                second = nums[i];
+15            } else if (nums[i] > third && nums[i] != first && nums[i] != second) {
+16                third = nums[i];
+17            }
+18        }
+19        if (third == Long.MIN_VALUE) {
+20            return (int)first;
+21        }
+22        return (int)third;
+23    }
+24}
