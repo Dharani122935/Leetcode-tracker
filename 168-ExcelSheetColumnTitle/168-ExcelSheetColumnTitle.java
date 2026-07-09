@@ -1,13 +1,15 @@
-// Last updated: 09/07/2026, 22:15:41
+// Last updated: 09/07/2026, 22:17:47
 1
 2class Solution {
-3    public List<Integer> inorderTraversal(TreeNode root) {
-4        List<Integer> list = new ArrayList<>();
-5        if(root != null){
-6            list.addAll(inorderTraversal(root.left));
-7            list.add(root.val);
-8            list.addAll(inorderTraversal(root.right));
+3    public ListNode removeElements(ListNode head, int val) {
+4        ListNode ret=new ListNode(0,head);
+5        ListNode current=ret;
+6        while(current!=null){
+7            while(current.next!=null&&current.next.val==val){
+8                current.next=current.next.next;
 9            }
-10            return list;
-11    }
-12}
+10            current=current.next;
+11        }
+12        return ret.next;
+13    }
+14}
