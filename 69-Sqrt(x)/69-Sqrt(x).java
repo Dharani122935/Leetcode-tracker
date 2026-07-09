@@ -1,21 +1,17 @@
-// Last updated: 09/07/2026, 22:29:31
-1class Solution {
-2    public int mySqrt(int x) {
-3        if(x==0 || x==1)
-4            return x;
-5        int left=1;
-6        int right=x;
-7        int ans=0;
-8        while(left<=right){
-9            int mid=left+(right-left)/2;
-10            if((long)mid*mid<=x){
-11                ans=mid;
-12                left=mid+1;
-13            }
-14            else{
-15                right=mid-1;
-16            }
-17        }
-18        return ans;
-19    }
-20}
+// Last updated: 09/07/2026, 22:31:15
+1import java.util.*;
+2
+3class Solution {
+4    public List<Integer> getRow(int rowIndex) {
+5        List<Integer> row = new ArrayList<>();
+6
+7        long value = 1;
+8
+9        for(int i = 0; i <= rowIndex; i++) {
+10            row.add((int)value);
+11            value = value * (rowIndex - i) / (i + 1);
+12        }
+13
+14        return row;
+15    }
+16}
