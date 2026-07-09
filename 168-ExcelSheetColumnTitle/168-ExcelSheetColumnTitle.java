@@ -1,23 +1,20 @@
-// Last updated: 09/07/2026, 22:05:23
+// Last updated: 09/07/2026, 22:06:21
 1class Solution {
-2    public List<String> fizzBuzz(int n) {
-3        List<String>ans=new ArrayList<>();
-4        for(int i=1;i<=n;i++){
-5            if(i%3==0&&i%5==0){
-6                ans.add("FizzBuzz");
-7            }
-8            else if(i%3==0){
-9                ans.add("Fizz");
-10            }
-11            else if(i%5==0){
-12                ans.add("Buzz");
-13            }
-14            else{
-15                ans.add(Integer.toString(i));
-16            }
-17
-18        }
-19        return ans;
-20
-21    }
-22}
+2    public String addBinary(String a, String b) {
+3        StringBuilder result = new StringBuilder();
+4        int i = a.length() - 1, j = b.length() - 1, carry = 0;
+5
+6        while (i >= 0 || j >= 0 || carry > 0) {
+7            int sum = carry;
+8            if (i >= 0) sum += a.charAt(i--) - '0';
+9            if (j >= 0) sum += b.charAt(j--) - '0';
+10            
+11            result.append(sum % 2);   
+12            carry = sum / 2;        
+13        }
+14
+15        return result.reverse().toString();
+16    }
+17}
+18
+19
