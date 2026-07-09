@@ -1,14 +1,18 @@
-// Last updated: 09/07/2026, 17:58:24
+// Last updated: 09/07/2026, 17:59:11
 1class Solution {
-2    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-3        int ans[]=new int[nums1.length];
-4        for(int i=0;i<nums1.length;i++) {
-5            int j=0;
-6            while(j<nums2.length && nums2[j]!=nums1[i]) j++;
-7            while(j<nums2.length && nums2[j]<=nums1[i]) j++;
-8            if(j==nums2.length) ans[i]=-1;
-9            else ans[i]=nums2[j];
-10        }
-11        return ans;
-12    }
-13}
+2    public int[] decompressRLElist(int[] nums) {
+3        int arrSize = 0;
+4        for (int i = 0; i < nums.length; i += 2) {
+5            arrSize += nums[i];
+6        }
+7        
+8        int[] result = new int[arrSize];
+9
+10        int startIdx = 0;
+11        for (int i = 0; i < nums.length; i += 2) {
+12            Arrays.fill(result, startIdx, startIdx + nums[i], nums[i + 1]);
+13            startIdx += nums[i];
+14        }
+15        return result;
+16    }
+17}
