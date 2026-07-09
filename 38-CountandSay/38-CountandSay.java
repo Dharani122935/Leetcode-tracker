@@ -1,27 +1,14 @@
-// Last updated: 09/07/2026, 17:57:20
+// Last updated: 09/07/2026, 17:58:24
 1class Solution {
-2    public String countAndSay(int n) {
-3        String result = "1";
-4        for (int i = 1; i < n; i++) {
-5            result = describe(result);
-6        }
-7        return result;
-8    }
-9
-10    private String describe(String s) {
-11        StringBuilder sb = new StringBuilder();
-12        int count = 1;
-13
-14        for (int i = 1; i < s.length(); i++) {
-15            if (s.charAt(i) == s.charAt(i - 1)) {
-16                count++;
-17            } else {
-18                sb.append(count).append(s.charAt(i - 1));
-19                count = 1;
-20            }
-21        }
-22
-23        sb.append(count).append(s.charAt(s.length() - 1));
-24        return sb.toString();
-25    }
-26}
+2    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+3        int ans[]=new int[nums1.length];
+4        for(int i=0;i<nums1.length;i++) {
+5            int j=0;
+6            while(j<nums2.length && nums2[j]!=nums1[i]) j++;
+7            while(j<nums2.length && nums2[j]<=nums1[i]) j++;
+8            if(j==nums2.length) ans[i]=-1;
+9            else ans[i]=nums2[j];
+10        }
+11        return ans;
+12    }
+13}
